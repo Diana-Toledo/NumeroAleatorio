@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adivinar número</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <h1 class="titJuego">Adivina el número</h1>
+    <div id="container">
+        <div id="cajas">
+            <div class="popup">
+                <span class="popuptext" id="popupIntentos">El valor debe ser entre 1 y 10</span>
+            </div>
+            <input type="text" id="numIntentos" placeholder="Número de intentos entre el 10"><br>
+            <div class="popup">
+                <span class="popuptext" id="popupNumMin">El valor debe ser entre 1 y 1000</span>
+            </div>
+            <input type="text" id="numMinimo" placeholder="Número mínimo entre: 0 y 1000"><br>
+            <div class="popup">
+                <span class="popuptext" id="popupNumMax"></span>
+            </div>
+            <input type="text" id="numMaximo" placeholder="Número mayor"><br>
+            <button id="jugar" value="Probar">Enviar</button>
+        </div>
+            
+            
+            
+    </div>
+    
+
+    <div id="container2">
+        <div id="cajas">
+            <input type="text" id="numUser"><br>
+            <button id="probar" value="Probar">Probar</button>
+        </div>
+    </div>
+
+    <div id="messageExit" class="exito">
+        <div id="exitoContent" class="contenidoExito">
+        <p class="texto-resaltado">¡CORRECTO!</p>
+        </div>
+    </div>
+    <!--    <div id="errorMessage" class="pista">
+        <div id="errorContent" class="cuadro-pista">
+            <img src="../img/assets/botones/error.svg" class="boton-redondo">
+            <p class="texto-resaltado">¡ERROR!</p>
+            <p><span id="resIncorrecta"></span></p> <!-- Tendra que cambiar en algunas pruebas
+        </div>
+    </div>-->
+    <script src="js/script.js"></script>
+</body>
+
+</html>
