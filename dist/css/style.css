@@ -40,8 +40,13 @@
     #cajas  {
       padding: 15px 0px 0px 10px;
     }
+
+    #letrai {
+        font-size: 30px;
+        padding: 5px;
+    }
     #cajas input, button {
-      width: 200px;
+      width: 210px;
         text-align: center;
         margin: 15px;
         padding: 1%;
@@ -123,9 +128,9 @@ padding: 20% 0 20% 0;
 position: fixed;
 top: 0;
 left: 0;
-background-color: #C6D57E9C;
+background-color: #A2CDCD;
 z-index: 99;
-    
+text-align: center;
 
 }
 
@@ -141,7 +146,7 @@ z-index: 99;
 
 }
 .texto-resaltado {
-  color: #ff00ff;
+  color: #474a4b;
   font-weight: 700;
 }
 
@@ -155,12 +160,12 @@ div.contenidoExito {
   width: 33%;
   height: 30%;
 padding: 10px 30px;
-background-color: #fff;
+
 margin: 0 auto;
 position: relative;
-color: #ff00ff;
+
 text-align: center;
-top: -50px;
+top: -70px;
 
 }
 

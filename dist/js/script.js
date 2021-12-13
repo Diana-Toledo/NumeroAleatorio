@@ -1,5 +1,6 @@
 "use strict";
 let intentos = 0;
+let intentoRespCorrecto = 0;
 let numMin = 0;
 let numMax = 0;
 let numAleatorio = 0;
@@ -51,6 +52,7 @@ const inputNumUser = document.querySelector("#numUser");
 const botonJugar = document.querySelector("#probar");
 const numeroMenorMensaje = document.querySelector('#numeroMenorActual');
 const numeroMayorMensaje = document.querySelector('#numeroMayorActual');
+const numAleatMensaje = document.querySelector('#numAleatorio');
 function handleStartGame() {
     // Así se capturan valores de input
     intentos = parseInt(inputIntentos.value);
@@ -60,6 +62,7 @@ function handleStartGame() {
     let numeroMenorActual = numeroMenorMensaje;
     let numeroMayorActual = numeroMayorMensaje;
     let intentoCorrect = intentoCorrecto;
+    let numAleatExito = numAleatMensaje;
     // llamar a las funciones de validación.
     let intentosEsValido = validarIntentos(intentos);
     let numsEsValido = validarNums(numMin, numMax);
@@ -70,6 +73,8 @@ function handleStartGame() {
         numeroMenorActual.innerHTML = numMin.toString();
         numeroMayorActual.innerHTML = numMax.toString();
         intentoCorrect.innerHTML = intentos.toString();
+        numAleatExito.innerHTML = intentos.toString();
+        intentoRespCorrecto = intentos;
         containerDos === null || containerDos === void 0 ? void 0 : containerDos.setAttribute('style', 'display: block;');
         containerUno === null || containerUno === void 0 ? void 0 : containerUno.setAttribute('style', 'display: none;');
     }
@@ -78,15 +83,17 @@ function handlePlay() {
     let numeroIntento = restoIntentos;
     let numeroMenorActual = numeroMenorMensaje;
     let numeroMayorActual = numeroMayorMensaje;
-    let intentoCorrect = intentoCorrecto;
-    let intentosTotales = 11;
+    //let intentoCorrect = <HTMLElement> intentoCorrecto;
+    let numAleatExito = numAleatMensaje;
     if (intentos > 0) {
         numUser = parseInt(inputNumUser.value);
         if (numUser == numAleatorio) {
+            intentos = intentoRespCorrecto - intentos + 1;
+            //intentosTotales = numUser;        
             respExito === null || respExito === void 0 ? void 0 : respExito.setAttribute('style', 'display: block;');
-            intentos = intentosTotales - intentos;
             //alert("Adivinaste el número " + numAleatorio + " en " + intentos + " intentos");
-            intentoCorrect.innerHTML = intentos.toString();
+            //intentoCorrect.innerHTML = intentos.toString();
+            numAleatExito.innerHTML = numAleatorio.toString();
         }
         else {
             if (numUser > numAleatorio && numUser < numMax) {
