@@ -10,6 +10,7 @@
     .titJuego {
       text-align: center;
       margin-top: 50px;
+      font-size: 60px;
   }
     
     #container { 
@@ -33,14 +34,17 @@
     ::placeholder {
       font-size: 15px;
     }
-    #cajas {
+    .inputs {
+      text-align: center;
+    }
+    #cajas  {
       padding: 15px 0px 0px 10px;
     }
     #cajas input, button {
       width: 200px;
         text-align: center;
         margin: 15px;
-        padding: 2%;
+        padding: 1%;
         /*border-radius: 10%;*/
         background-color: #A2CDCD;
         font-size: 20px;
@@ -50,7 +54,7 @@
  /* Popup container */
  .popup {
     position: relative;
-    top: 10px;
+    top: 5px;
     display: inline-block;
     cursor: pointer;
     
@@ -109,7 +113,7 @@ line-height: 0px;
     to {opacity:1 ;}
   } 
 
-  #messageExit {
+  #messageExit, #messageIntentos {
     display: none;
   }
   div.exito { 
@@ -122,6 +126,18 @@ left: 0;
 background-color: #C6D57E9C;
 z-index: 99;
     
+
+}
+
+div.intentos { 
+  width: 100%;
+height: 100%;
+padding: 20% 0 20% 0;
+position: fixed;
+top: 0;
+left: 0;
+z-index: 99;
+  
 
 }
 .texto-resaltado {
@@ -146,4 +162,36 @@ color: #ff00ff;
 text-align: center;
 top: -50px;
 
+}
+
+div.contenidoIntentos {
+  width: 33%;
+  height: 30%;
+padding: 10px 30px;
+margin: 0 auto;
+position: relative;
+color: #ff00ff;
+text-align: center;
+top: -50px;
+
+}
+
+.colorimpar {
+  /*color: purple;*/
+  color: #555;
+  font-weight: bolder; 
+  font-size: 50px;
+}
+
+.colorpar {
+  /*color: purple;*/
+  color: #555;
+  font-weight: bolder; 
+  font-size: 50px;
+}
+
+.verde {
+  color: rgb(19, 122, 42);
+  font-weight: bolder; 
+  font-size: 50px;
 }

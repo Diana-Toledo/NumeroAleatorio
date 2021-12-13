@@ -31,15 +31,29 @@
     
 
     <div id="container2">
-        <div id="cajas">
+        <div id="cajas" class="inputs">
             <input type="text" id="numUser"><br>
             <button id="probar" value="Probar">Probar</button>
+            <div id="intentosJuego">
+                <h1>Intentos por jugar:</h1><h1 id="restoIntentos" class="colorimpar">10</h1>
+            </div>
+            <div>
+                <h1>El número está entre:</h1>
+                <span id="numeroMenorActual" class="colorimpar">1</span> y
+                <span id="numeroMayorActual" class="colorimpar">1000</span>
+            </div>
         </div>
     </div>
 
+    <!--<div id="messageIntentos" class="intentos">
+        <div id="exitoContent" class="contenidoIntentos">
+        <p class="texto-resaltado">¡intentos!</p>
+        </div>
+    </div>-->
     <div id="messageExit" class="exito">
         <div id="exitoContent" class="contenidoExito">
         <p class="texto-resaltado">¡CORRECTO!</p>
+        <h1>adivinaste en el intento:</h1><h1 id="intentoCorrecto" class="verde" class="colorpar">0</h1>
         </div>
     </div>
     <!--    <div id="errorMessage" class="pista">

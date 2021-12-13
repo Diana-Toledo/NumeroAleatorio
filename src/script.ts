@@ -48,16 +48,27 @@ const inputNumMax = document.querySelector("#numMaximo");
 const popupNumMax = document.querySelector("#popupNumMax");
 const botonIniciarJuego = document.querySelector("#jugar");
 const containerUno = document.querySelector('#container');
+
 const containerDos = document.querySelector('#container2');
 const respExito = document.querySelector('#messageExit');
+const restoIntentos = document.querySelector('#restoIntentos');
+const intentoCorrecto = document.querySelector('#intentoCorrecto');
 const inputNumUser = document.querySelector("#numUser");
 const botonJugar = document.querySelector("#probar");
+const numeroMenorMensaje = document.querySelector('#numeroMenorActual');
+const numeroMayorMensaje= document.querySelector('#numeroMayorActual');
+
 
 function handleStartGame() {
     // Así se capturan valores de input
     intentos = parseInt((<HTMLInputElement>inputIntentos).value);
     numMin = parseInt((<HTMLInputElement>inputNumMin).value);
     numMax = parseInt((<HTMLInputElement>inputNumMax).value);
+
+    let numeroIntento = <HTMLElement> restoIntentos;
+    let numeroMenorActual = <HTMLElement> numeroMenorMensaje;
+    let numeroMayorActual = <HTMLElement> numeroMayorMensaje;
+    let intentoCorrect = <HTMLElement> intentoCorrecto;
     
     // llamar a las funciones de validación.
     let intentosEsValido:boolean = validarIntentos(intentos);
@@ -65,29 +76,61 @@ function handleStartGame() {
     
     if (intentosEsValido == true && numsEsValido == true) {
         numAleatorio = getNumAleat(numMin, numMax);
-        console.log(numAleatorio)       
+        console.log(numAleatorio);
+        
+        numeroIntento.innerHTML = intentos.toString();
+        numeroMenorActual.innerHTML = numMin.toString();
+        numeroMayorActual.innerHTML = numMax.toString();
+        intentoCorrect.innerHTML = intentos.toString();
+
         containerDos?.setAttribute('style', 'display: block;');
         containerUno?.setAttribute('style', 'display: none;');
     }      
 }
 
 function handlePlay() {
-    if (intentos > 0) {
-            numUser = parseInt((<HTMLInputElement>inputNumUser).value);
-        if (numUser == numAleatorio) {            
-            respExito?.setAttribute('style', 'display: block;');
+    
+    let numeroIntento = <HTMLElement> restoIntentos;
+    let numeroMenorActual = <HTMLElement> numeroMenorMensaje;
+    let numeroMayorActual = <HTMLElement> numeroMayorMensaje;
+    let intentoCorrect = <HTMLElement> intentoCorrecto;
 
-        } else if ( numUser > numAleatorio && numUser < numMax ){
+    let intentosTotales = 11;
+    if (intentos > 0) {
+        
+            numUser = parseInt((<HTMLInputElement>inputNumUser).value);
+        if (numUser == numAleatorio) { 
+                       
+            respExito?.setAttribute('style', 'display: block;');
+            intentos = intentosTotales - intentos;
+            //alert("Adivinaste el número " + numAleatorio + " en " + intentos + " intentos");
+            intentoCorrect.innerHTML = intentos.toString();
+            
+        } else
+        {
+
+        
+        if ( numUser > numAleatorio && numUser < numMax ){
             numMax = numUser;
             intentos--;
-            alert("Te quedan " + intentos);
+            //alert("Te quedan " + intentos);
+            numeroMayorActual.innerHTML = numMax.toString();
+           
+            
+            //restoIntentos?.classList.add( "colorimpar" );
+
         } else if ( numUser < numAleatorio && numUser > numMin ){
             numMin = numUser;
             intentos--;
-            alert("Te quedan " + intentos);
+            numeroMenorActual.innerHTML = numMin.toString();
+        } else {
+            intentos--;
         }
-        alert("Debes decir un número entre " + numMin + " y " + numMax);
+        numeroIntento.innerHTML = intentos.toString();
+        //alert("Te quedan" + " " + intentos + "intentos");
+    }
     } else{
+        
         alert("Se te acabaron los intentos")
         containerDos?.setAttribute('style', 'display: none;');
         containerUno?.setAttribute('style', 'display: block;');
@@ -125,11 +168,15 @@ function handleErrorNumMax(evt) {
     
         let popupEjemplo = <HTMLElement> popupNumMax;
         if (!validarNumMinMax(numMin) || isNaN(numMin) && !validarNumMinMax(numMax)) {
-            popupEjemplo.innerHTML = "El número tiene que ser entre 0 y 1000";
+            popupEjemplo.innerHTML = "El valor debe ser entre 0 y 1000";
             popupNumMax?.classList.add('show');
+            
+        } else if (!validarNumMinMax(numMin) || isNaN(numMin) && validarNumMinMax(numMax)) {
+            popupNumMax?.classList.remove('show');
         } else if(validarNumMinMax(numMin) && !validarNumMinMax(numMax) && !numsEsValido || !numsEsValido){
-            popupEjemplo.innerHTML = "El número tiene que ser entre "+ numMin +" y 1000";
+            popupEjemplo.innerHTML = "El valor entre " + numMin +" y 1000";
             popupNumMax?.classList.add('show');
+            
         }
 
         if (evt.type == "focus") { // Verificar el tipo de evento 
@@ -149,7 +196,7 @@ inputNumMax?.addEventListener("blur", handleErrorNumMax);
 inputNumMax?.addEventListener("focus", handleErrorNumMax);
 botonJugar?.addEventListener("click", handlePlay);
 
-
+// Queda pendiente la condición de la linea 98
 
 
 
